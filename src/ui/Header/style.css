@@ -1,0 +1,10 @@
+nav {
+  width: 100%;
+  text-align: center
+}
+
+nav > a {
+  color: #555555;
+  text-decoration: none;
+  padding: 0 1em;
+}

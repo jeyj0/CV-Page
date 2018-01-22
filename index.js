@@ -1,4 +1,6 @@
 import "./style";
+import "./node_modules/normalize.css/normalize.css";
+
 import { Component } from "preact";
 import Router from "preact-router";
 
@@ -14,8 +16,7 @@ export default class App extends Component {
       <div>
         <Header />
         <Router>
-          <Redirect path="/" to="projects" />
-
+          <Redirect path="/" to="/projects" default />
           <CurriculumVitae path="/cv" />
           <Projects path="/projects" />
           <About path="/about" />
