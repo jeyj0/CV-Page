@@ -15,7 +15,7 @@ export default class TitleBar extends Component {
   render(props, { isMenuOpen }) {
     return (
       <div class="titleBar">
-        <Menu>
+        <Menu textAlign="right">
           <Link activeClassName="active" href="/home">
             Home
           </Link>

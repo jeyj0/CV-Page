@@ -1,4 +1,14 @@
 .menu {
+  &.left {
+    text-align: left;
+  }
+  &.right {
+    text-align: right;
+  }
+  &.center {
+    text-align: center;
+  }
+
   .menuButton {
     position: absolute;
     top: 0;

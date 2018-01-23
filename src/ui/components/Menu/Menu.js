@@ -10,9 +10,9 @@ export default class Menu extends Component {
     this.setState({ isMenuOpen: !this.state.isMenuOpen });
   };
 
-  render(props, { isMenuOpen }) {
+  render({ textAlign }, { isMenuOpen }) {
     return (
-      <div class="menu">
+      <div class={"menu" + (textAlign ? " " + textAlign : " left")}>
         <div onClick={this.toggleMenu} class="menuButton">
           <div class="menuButtonPart" />
           <div class="menuButtonPart" />
