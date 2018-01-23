@@ -1,8 +1,7 @@
 import "./style.scss";
 import { Component } from "preact";
+import Menu from "../Menu/Menu";
 import { Link } from "preact-router/match";
-
-// test
 
 export default class TitleBar extends Component {
   state = {
@@ -16,15 +15,7 @@ export default class TitleBar extends Component {
   render(props, { isMenuOpen }) {
     return (
       <div class="titleBar">
-        <div onClick={this.toggleMenu} class="menuButton">
-          <div class="menuButtonPart" />
-          <div class="menuButtonPart" />
-          <div class="menuButtonPart" />
-        </div>
-        {isMenuOpen ? (
-          <div onClick={this.toggleMenu} class="background-tap-listen-helper" />
-        ) : null}
-        <nav onMouseDown={this.toggleMenu} class={isMenuOpen ? "open" : ""}>
+        <Menu>
           <Link activeClassName="active" href="/home">
             Home
           </Link>
@@ -37,7 +28,7 @@ export default class TitleBar extends Component {
           <Link activeClassName="active" href="/about">
             About
           </Link>
-        </nav>
+        </Menu>
       </div>
     );
   }
