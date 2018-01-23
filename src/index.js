@@ -4,14 +4,12 @@ import "../node_modules/normalize.css/normalize.css";
 import { Component } from "preact";
 import Router from "preact-router";
 
-import Header from "./ui/Header/Header";
-import Redirect from "./ui/Redirect/Redirect";
-import Home from "./ui/Home/Home";
-import CurriculumVitae from "./ui/CurriculumVitae/CurriculumVitae";
-import Projects from "./ui/Projects/Projects";
-import About from "./ui/About/About";
-
-const postcss = require("postcss");
+import Header from "./ui/components/Header/Header";
+import Redirect from "./ui/components/Redirect/Redirect";
+import Home from "./ui/pages/Home/Home";
+import CurriculumVitae from "./ui/pages/CurriculumVitae/CurriculumVitae";
+import Projects from "./ui/pages/Projects/Projects";
+import About from "./ui/pages/About/About";
 
 export default class App extends Component {
   render() {
