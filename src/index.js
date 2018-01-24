@@ -1,10 +1,11 @@
+import "./vars.scss";
 import "./style.scss";
 import "../node_modules/normalize.css/normalize.css";
 
 import { Component } from "preact";
 import Router from "preact-router";
 
-import Header from "./ui/components/Header/Header";
+import TitleBar from "./ui/components/TitleBar/TitleBar";
 import Redirect from "./ui/components/Redirect/Redirect";
 import Home from "./ui/pages/Home/Home";
 import CurriculumVitae from "./ui/pages/CurriculumVitae/CurriculumVitae";
@@ -15,7 +16,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <Header />
+        <TitleBar />
         <Router>
           <Redirect path="/" to="/home" default />
           <Home path="/home" />

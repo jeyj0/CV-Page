@@ -1,13 +1,14 @@
-.header .center {
-  text-align: center;
-}
+.header {
+  .center {
+    text-align: center;
+  }
 
-.header .roundImage {
-  border-radius: 50%;
-  width: 10em;
-  margin: 5em 0 2em;
-  border: 3px solid #ffffff;
-  -webkit-box-shadow: 0px 3px 20px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 3px 20px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 3px 20px 0px rgba(0, 0, 0, 0.5);
+  img {
+    border-radius: 50%;
+    width: 10em;
+    margin: 5em 0 2em;
+    border: 3px solid #ffffff;
+    background-color: #ffffff;
+    box-shadow: 0px 3px 20px 0px rgba(0, 0, 0, 0.5);
+  }
 }
