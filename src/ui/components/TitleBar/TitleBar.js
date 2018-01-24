@@ -15,7 +15,9 @@ export default class TitleBar extends Component {
   render(props, { isMenuOpen }) {
     return (
       <div class="titleBar">
-        <Menu textAlign="right">
+        <img src="/assets/icon.png" />
+        <span>Jannis Jorre</span>
+        <Menu class="alignRight">
           <Link activeClassName="active" href="/home">
             Home
           </Link>

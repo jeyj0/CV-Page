@@ -1,18 +1,5 @@
 .menu {
-  &.left {
-    text-align: left;
-  }
-  &.right {
-    text-align: right;
-  }
-  &.center {
-    text-align: center;
-  }
-
   .menuButton {
-    position: absolute;
-    top: 0;
-    right: 0;
     padding: 0.5em 0.75em 0.5em 0.75em;
     cursor: pointer;
 
