@@ -1,22 +1,34 @@
 import "./style.scss";
 import { Component } from "preact";
-import Menu from "../Menu/Menu";
 import { Link } from "preact-router/match";
+
+import Menu from "../Menu/Menu";
 
 export default class TitleBar extends Component {
   state = {
-    isMenuOpen: false
+    isSmall: true
   };
 
-  toggleMenu = () => {
-    this.setState({ isMenuOpen: !this.state.isMenuOpen });
+  toggleSmall = () => {
+    this.setState({ isSmall: !this.state.isSmall });
   };
 
-  render(props, { isMenuOpen }) {
+  render(props, { isSmall }) {
     return (
       <div class="titleBar">
-        <img src="/assets/avatar.png" />
-        <span>Jannis Jorre</span>
+        <div class="title" onClick={this.toggleSmall}>
+          <img
+            class={isSmall ? "small" : ""}
+            src="/assets/avatar.png"
+            alt="Jannis Jorre"
+          />
+          <div class={isSmall ? "small up" : ""}>
+            <h1 class={isSmall ? "small up" : ""}>Jannis Jorre</h1>
+          </div>
+          <div class={isSmall ? "small" : ""}>
+            <h2 class={isSmall ? "small" : ""}>Home</h2>
+          </div>
+        </div>
         <Menu class="alignRight">
           <Link activeClassName="active" href="/home">
             Home

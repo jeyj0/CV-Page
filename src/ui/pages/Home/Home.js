@@ -10,8 +10,6 @@ export default class Home extends Component {
         <Head>
           <title>Jannis Jorre - Home</title>
         </Head>
-        <Header />
-        <p>Ich heiße Jannis</p>
       </div>
     );
   }
