@@ -1,6 +1,22 @@
 @import "../../../lib/vars";
-
+$moveAwayTop: -20%;
 $transition-duration: 0.5s;
+@keyframes titleBar_upDown {
+  from {
+    top: 75%;
+  }
+  to {
+    top: 80%;
+  }
+}
+@keyframes titleBar_moveAway {
+  from {
+    top: 80%;
+  }
+  to {
+    top: $moveAwayTop;
+  }
+}
 
 .titleBar {
   position: fixed;
@@ -9,7 +25,64 @@ $transition-duration: 0.5s;
   width: 100%;
   height: 4.5em;
   text-align: right;
-  // box-shadow: 0px 3px 30px 0px rgba(50, 50, 50, 0.75);
+  background-color: #ffffff;
+  box-shadow: 0px 3px 30px 0px rgba(50, 50, 50, 0.75);
+
+  transition-property: height;
+  transition-duration: $transition-duration;
+
+  height: 100%;
+  &.small {
+    height: 4.5em;
+    position: fixed;
+  }
+
+  div.arrowContainer {
+    width: 100%;
+    position: fixed;
+    animation-name: titleBar_upDown;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+
+    top: 80%;
+    opacity: 1;
+    transition-property: opacity;
+    transition-duration: $transition-duration;
+    transition-delay: 0.4s;
+
+    &.small {
+      opacity: 0;
+      top: $moveAwayTop;
+
+      animation-name: titleBar_moveAway;
+      animation-direction: normal;
+      animation-timing-function: ease-out;
+      animation-duration: $transition-duration;
+      animation-iteration-count: 1;
+      transition-delay: 0s;
+      transition-duration: $transition-duration;
+    }
+
+    div.arrow {
+      $border-width: 10px;
+      $size: 2em;
+      border-color: transparent $c-primary-dark $c-primary-dark transparent;
+      border-style: solid;
+      border-width: $border-width;
+      position: relative;
+      margin: 0 auto;
+      width: $size;
+      height: $size;
+      transform: rotate(45deg);
+      transform-origin: 50% 50%;
+
+      top: 0;
+      transition-property: top;
+      transition-duration: $transition-duration;
+    }
+  }
 
   > * {
     float: left;

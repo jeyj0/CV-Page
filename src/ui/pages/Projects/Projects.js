@@ -6,6 +6,7 @@ export default class Projects extends Component {
   componentWillMount() {
     this.props.setSubTitle("Projects");
     this.props.minTitleBar();
+    this.props.disableMaxTitleBar();
   }
 
   render() {

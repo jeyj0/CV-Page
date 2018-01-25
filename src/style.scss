@@ -5,12 +5,15 @@ body {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
   overflow-x: hidden;
+  width: 100%;
   height: 100%;
-  min-width: 320px;
 }
 
-.app {
-  .content {
-    margin-top: 4.5em;
-  }
+html {
+  position: fixed;
+}
+
+body {
+  min-width: 320px;
+  min-height: 440px;
 }

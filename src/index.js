@@ -17,19 +17,23 @@ import About from "./ui/pages/About/About";
 export default class App extends Component {
   state = {
     titleBarState: "big",
+    titleBarMaximizable: true,
     subtitle: ""
   };
 
   minTitleBar = () => this.setState({ titleBarState: "small" });
   maxTitleBar = () => this.setState({ titleBarState: "big" });
+  enableMaxTitleBar = () => this.setState({ titleBarMaximizable: true });
+  disableMaxTitleBar = () => this.setState({ titleBarMaximizable: false });
 
   setSubTitle = subtitle => {
     this.setState({ subtitle });
   };
 
-  render(props, { subtitle, titleBarState }) {
+  render(props, { subtitle, titleBarState, titleBarMaximizable }) {
     return (
       <div class="app">
+        <noscript>Please enable JavaScript to use this site.</noscript>
         <Head>
           <meta name="theme-color" content={Vars.statusColor} />
         </Head>
@@ -37,6 +41,7 @@ export default class App extends Component {
           sizeState={titleBarState ? titleBarState : "small"}
           title="Jannis Jorre"
           subtitle={subtitle}
+          maximizable={titleBarMaximizable}
         >
           <Router>
             <Redirect path="/" to="/home" default />
@@ -45,24 +50,32 @@ export default class App extends Component {
               minTitleBar={this.minTitleBar}
               maxTitleBar={this.maxTitleBar}
               setSubTitle={this.setSubTitle}
+              enableMaxTitleBar={this.enableMaxTitleBar}
+              disableMaxTitleBar={this.disableMaxTitleBar}
             />
             <CurriculumVitae
               path="/cv"
               minTitleBar={this.minTitleBar}
               maxTitleBar={this.maxTitleBar}
               setSubTitle={this.setSubTitle}
+              enableMaxTitleBar={this.enableMaxTitleBar}
+              disableMaxTitleBar={this.disableMaxTitleBar}
             />
             <Projects
               path="/projects"
               minTitleBar={this.minTitleBar}
               maxTitleBar={this.maxTitleBar}
               setSubTitle={this.setSubTitle}
+              enableMaxTitleBar={this.enableMaxTitleBar}
+              disableMaxTitleBar={this.disableMaxTitleBar}
             />
             <About
               path="/about"
               minTitleBar={this.minTitleBar}
               maxTitleBar={this.maxTitleBar}
               setSubTitle={this.setSubTitle}
+              enableMaxTitleBar={this.enableMaxTitleBar}
+              disableMaxTitleBar={this.disableMaxTitleBar}
             />
           </Router>
         </TitleBarLayout>

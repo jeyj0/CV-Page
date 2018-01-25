@@ -6,6 +6,7 @@ export default class About extends Component {
   componentWillMount() {
     this.props.setSubTitle("About");
     this.props.minTitleBar();
+    this.props.disableMaxTitleBar();
   }
 
   render() {
