@@ -6,6 +6,7 @@ import Menu from "../Menu/Menu";
 
 export default class TitleBar extends Component {
   toggable = true;
+  scrollLock = false;
   touchCoords = {
     start: {
       x: null,
@@ -26,7 +27,7 @@ export default class TitleBar extends Component {
   maximize = () => this.setState({ isSmall: false });
   blockToggle = () => (this.toggable = false);
 
-  toggleIfAllowed = override => {
+  toggleIfAllowed = () => {
     if (!this.toggable) {
       this.toggable = true;
       return;
@@ -44,31 +45,45 @@ export default class TitleBar extends Component {
     this.touchCoords.end.x = e.changedTouches[0].pageX;
     this.touchCoords.end.y = e.changedTouches[0].pageY;
 
-    //this.toggleIfAllowed();
     const dx = Math.abs(this.touchCoords.end.x - this.touchCoords.start.x);
     const dy = Math.abs(this.touchCoords.end.y - this.touchCoords.start.y);
     if (dy > dx && dy > 20) {
-      this.toggleIfAllowed(false);
+      this.toggleIfAllowed();
     }
   };
 
   componentWillReceiveProps = (nextProps, nextState) => {
-    this.setState({
-      isSmall: nextProps.sizeState == "small" || !this.props.sizeState,
-      isUp: nextProps.subtitle != null,
-      maximizable: nextProps.maximizable
-    });
+    let newState = {};
+
+    if (this.props.sizeState !== nextProps.sizeState)
+      newState.isSmall =
+        nextProps.sizeState == "small" || !this.props.sizeState;
+    if (this.props.subtitle !== nextProps.subtitle)
+      newState.isUp = nextProps.subtitle != null;
+    if (this.props.maximizable !== nextProps.maximizable)
+      newState.maximizable = nextProps.maximizable;
+
+    this.setState(newState);
+
+    // this.setState({
+    //   isSmall: nextProps.sizeState == "small" || !this.props.sizeState,
+    //   isUp: nextProps.subtitle != null,
+    //   maximizable: nextProps.maximizable
+    // });
     if (!nextProps.maximizable) this.minimize();
   };
 
-  render({ title, subtitle, maximizable }, { isSmall, isUp }) {
+  render({ title, subtitle, maximizable, showShadow }, { isSmall, isUp }) {
     return (
       <div
-        class={"titleBar" + (isSmall || !maximizable ? " small" : "")}
+        class={
+          "titleBar" +
+          (isSmall || !maximizable ? " small" : "") +
+          (showShadow ? " shadow" : "")
+        }
         onClick={this.toggleIfAllowed}
         onTouchStart={this.touchStart}
         onTouchEnd={this.touchEnd}
-        //onScroll={this.toggleIfAllowed}
       >
         <div class="title">
           <img

@@ -1,5 +1,9 @@
 .titleBarLayout {
   .content {
-    padding-top: 4.5em;
+    position: absolute;
+    height: calc(100% - 4.5em);
+    margin-top: 4.5em;
+    overflow-y: scroll;
+    width: 100%;
   }
 }
