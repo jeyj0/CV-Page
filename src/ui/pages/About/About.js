@@ -1,5 +1,5 @@
 import { Component } from "preact";
-
+import Head from "preact-head";
 import TitleBarLayout from "../../components/TitleBarLayout/TitleBarLayout";
 
 export default class About extends Component {
@@ -12,6 +12,9 @@ export default class About extends Component {
   render() {
     return (
       <div>
+        <Head>
+          <title>Jannis Jorre - About</title>
+        </Head>
         <h2>About</h2>
       </div>
     );
