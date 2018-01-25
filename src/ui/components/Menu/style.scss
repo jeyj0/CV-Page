@@ -1,16 +1,22 @@
 .menu {
   .menuButton {
-    padding: 0.5em 0.75em 0.5em 0.75em;
     cursor: pointer;
 
+    $paddingContainer: 0.7em;
+    padding: $paddingContainer 0;
+    $partSize: 0.5em;
+    $totalSize: 4.5em;
+
     .menuButtonPart {
-      height: 0.5em;
-      margin: 0.5em 0;
-      width: 3em;
+      height: $partSize;
+      margin: (($totalSize - $paddingContainer * 2 - ($partSize * 3)) / 4) ((
+              $totalSize - $partSize
+            ) / 2);
+      width: $partSize;
+      border-radius: 50%;
       background-color: #555555;
     }
   }
-
   nav {
     background-color: #ffffff;
     width: fit-content;
@@ -20,19 +26,16 @@
     right: 0.5em;
     border-radius: 3px;
     box-shadow: 0px 3px 40px 0px rgba(0, 0, 0, 0.5);
-
     overflow: hidden;
     max-height: 0;
     max-width: 0;
     transition: max-width calc(3s / 4), max-height calc(1s / 4);
-
     &.open {
       max-height: 30em;
       max-width: 20em;
       transition: max-width calc(2s / 5), max-height calc(3s / 5);
     }
   }
-
   nav a {
     display: block;
     font-size: 1.5em;
@@ -40,12 +43,10 @@
     text-decoration: none;
     padding: 1em;
     /* width: 100%; */
-
     &.active {
       color: #000000;
     }
   }
-
   div.background-tap-listen-helper {
     position: fixed;
     top: 0;
