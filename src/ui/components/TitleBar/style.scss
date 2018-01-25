@@ -97,6 +97,7 @@ $transition-duration: 0.5s;
     div:nth-child(3) {
       position: absolute;
       left: 4.65em;
+      width: 100%;
     }
 
     h2 {
@@ -109,7 +110,7 @@ $transition-duration: 0.5s;
       font-size: $font-size;
       line-height: (4.5em / $font-size * 1em);
 
-      top: 2em;
+      top: 1.5em;
 
       transition-property: opacity, top;
       transition-duration: $transition-duration / 3;

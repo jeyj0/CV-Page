@@ -6,14 +6,19 @@ import Menu from "../Menu/Menu";
 
 export default class TitleBar extends Component {
   state = {
-    isSmall: true
+    isSmall: this.props.sizeState == "small" || !this.props.sizeState,
+    isUp: this.props.subtitle ? true : false
   };
 
-  toggleSmall = () => {
-    this.setState({ isSmall: !this.state.isSmall });
-  };
+  toggleSmall = () => this.setState({ isSmall: !this.state.isSmall });
 
-  render(props, { isSmall }) {
+  componentWillReceiveProps = (nextProps, nextState) =>
+    this.setState({
+      isSmall: nextProps.sizeState == "small" || !this.props.sizeState,
+      isUp: nextProps.subtitle != null
+    });
+
+  render({ title, subtitle }, { isSmall, isUp }) {
     return (
       <div class="titleBar">
         <div class="title" onClick={this.toggleSmall}>
@@ -22,11 +27,13 @@ export default class TitleBar extends Component {
             src="/assets/avatar.png"
             alt="Jannis Jorre"
           />
-          <div class={isSmall ? "small up" : ""}>
-            <h1 class={isSmall ? "small up" : ""}>Jannis Jorre</h1>
+          <div class={(isSmall ? "small" : "") + (isUp ? " up" : "")}>
+            <h1 class={(isSmall ? "small" : "") + (isUp ? " up" : "")}>
+              {title ? title : ""}
+            </h1>
           </div>
-          <div class={isSmall ? "small" : ""}>
-            <h2 class={isSmall ? "small" : ""}>Home</h2>
+          <div class={isSmall && isUp ? "small" : ""}>
+            <h2 class={isSmall && isUp ? "small" : ""}>{subtitle}</h2>
           </div>
         </div>
         <Menu class="alignRight">

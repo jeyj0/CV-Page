@@ -6,28 +6,66 @@ import Router from "preact-router";
 import Head from "preact-head";
 
 import Vars from "./lib/Vars";
-import TitleBar from "./ui/components/TitleBar/TitleBar";
 import Redirect from "./ui/components/Redirect/Redirect";
+import TitleBarLayout from "./ui/components/TitleBarLayout/TitleBarLayout";
+
 import Home from "./ui/pages/Home/Home";
 import CurriculumVitae from "./ui/pages/CurriculumVitae/CurriculumVitae";
 import Projects from "./ui/pages/Projects/Projects";
 import About from "./ui/pages/About/About";
 
 export default class App extends Component {
-  render() {
+  state = {
+    titleBarState: "big",
+    subtitle: ""
+  };
+
+  minTitleBar = () => this.setState({ titleBarState: "small" });
+  maxTitleBar = () => this.setState({ titleBarState: "big" });
+
+  setSubTitle = subtitle => {
+    this.setState({ subtitle });
+  };
+
+  render(props, { subtitle, titleBarState }) {
     return (
-      <div>
+      <div class="app">
         <Head>
           <meta name="theme-color" content={Vars.statusColor} />
         </Head>
-        <TitleBar />
-        <Router>
-          <Redirect path="/" to="/home" default />
-          <Home path="/home" />
-          <CurriculumVitae path="/cv" />
-          <Projects path="/projects" />
-          <About path="/about" />
-        </Router>
+        <TitleBarLayout
+          sizeState={titleBarState ? titleBarState : "small"}
+          title="Jannis Jorre"
+          subtitle={subtitle}
+        >
+          <Router>
+            <Redirect path="/" to="/home" default />
+            <Home
+              path="/home"
+              minTitleBar={this.minTitleBar}
+              maxTitleBar={this.maxTitleBar}
+              setSubTitle={this.setSubTitle}
+            />
+            <CurriculumVitae
+              path="/cv"
+              minTitleBar={this.minTitleBar}
+              maxTitleBar={this.maxTitleBar}
+              setSubTitle={this.setSubTitle}
+            />
+            <Projects
+              path="/projects"
+              minTitleBar={this.minTitleBar}
+              maxTitleBar={this.maxTitleBar}
+              setSubTitle={this.setSubTitle}
+            />
+            <About
+              path="/about"
+              minTitleBar={this.minTitleBar}
+              maxTitleBar={this.maxTitleBar}
+              setSubTitle={this.setSubTitle}
+            />
+          </Router>
+        </TitleBarLayout>
       </div>
     );
   }
