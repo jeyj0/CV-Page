@@ -33,10 +33,11 @@ export default class App extends Component {
   render(props, { subtitle, titleBarState, titleBarMaximizable }) {
     return (
       <div class="app">
-        <noscript>Please enable JavaScript to use this site.</noscript>
         <Head>
+          <link rel="shortcut icon" href="/assets/favicon.ico" />
           <meta name="theme-color" content={Vars.statusColor} />
         </Head>
+        <noscript>Please enable JavaScript to use this site.</noscript>
         <TitleBarLayout
           sizeState={titleBarState ? titleBarState : "small"}
           title="Jannis Jorre"
