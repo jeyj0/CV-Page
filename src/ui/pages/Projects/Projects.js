@@ -15,7 +15,6 @@ export default class Projects extends Component {
         <Head>
           <title>Jannis Jorre - Projects</title>
         </Head>
-        {/* <h2>Projects</h2> */}
         <ProjectList />
       </div>
     );
