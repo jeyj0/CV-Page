@@ -1,6 +1,6 @@
 import { Component } from "preact";
 import Head from "preact-head";
-import TitleBarLayout from "../../components/TitleBarLayout/TitleBarLayout";
+import ProjectList from "../../components/ProjectList/ProjectList";
 
 export default class Projects extends Component {
   componentWillMount() {
@@ -15,7 +15,8 @@ export default class Projects extends Component {
         <Head>
           <title>Jannis Jorre - Projects</title>
         </Head>
-        <h2>Projects</h2>
+        {/* <h2>Projects</h2> */}
+        <ProjectList />
       </div>
     );
   }

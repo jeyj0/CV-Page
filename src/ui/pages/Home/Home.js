@@ -1,8 +1,5 @@
 import { Component } from "react";
 import Head from "preact-head";
-import Vars from "../../../lib/Vars";
-
-import TitleBarLayout from "../../components/TitleBarLayout/TitleBarLayout";
 
 export default class Home extends Component {
   componentWillMount() {

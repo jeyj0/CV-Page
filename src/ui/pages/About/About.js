@@ -1,6 +1,5 @@
 import { Component } from "preact";
 import Head from "preact-head";
-import TitleBarLayout from "../../components/TitleBarLayout/TitleBarLayout";
 
 export default class About extends Component {
   componentWillMount() {
