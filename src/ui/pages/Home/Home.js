@@ -1,5 +1,4 @@
 import { Component } from "react";
-import Header from "../../components/Header/Header";
 import Head from "preact-head";
 import Vars from "../../../lib/Vars";
 
