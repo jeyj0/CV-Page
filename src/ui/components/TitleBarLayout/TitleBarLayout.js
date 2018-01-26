@@ -21,7 +21,7 @@ export default class TitleBarLayout extends Component {
   componentDidMount = () => {
     document
       .getElementById("content")
-      .addEventListener("scroll", this.scrollHandler);
+      .addEventListener("scroll", this.scrollHandler, { passive: true });
   };
   componentWillUnmount = () => {
     document.getElementById("content").removeEventListener(this.scrollHandler);

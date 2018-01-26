@@ -34,6 +34,11 @@ export default class App extends Component {
     return (
       <div class="app">
         <Head>
+          <meta
+            name="description"
+            content="Jannis Jorre | Software Developer | Java, HTML, CSS, JS"
+          />
+
           <meta name="theme-color" content={Vars.statusColor} />
           <meta name="msapplication-TileColor" content="#ffffff" />
           <link rel="manifest" href="/manifest.json" />

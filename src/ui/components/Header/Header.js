@@ -7,7 +7,7 @@ export default class Header extends Component {
     return (
       <div class="header">
         <div class="center">
-          <img src="/assets/avatar.png" alt="Jannis Jorre" />
+          <img src="/assets/avatar.webp" alt="Jannis Jorre" />
           <h1>Jannis Jorre</h1>
         </div>
       </div>

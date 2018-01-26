@@ -65,17 +65,13 @@ export default class TitleBar extends Component {
 
     this.setState(newState);
 
-    // this.setState({
-    //   isSmall: nextProps.sizeState == "small" || !this.props.sizeState,
-    //   isUp: nextProps.subtitle != null,
-    //   maximizable: nextProps.maximizable
-    // });
     if (!nextProps.maximizable) this.minimize();
   };
 
   render({ title, subtitle, maximizable, showShadow }, { isSmall, isUp }) {
     return (
       <div
+        id="titleBar"
         class={
           "titleBar" +
           (isSmall || !maximizable ? " small" : "") +
@@ -88,7 +84,7 @@ export default class TitleBar extends Component {
         <div class="title">
           <img
             class={isSmall || !maximizable ? "small" : ""}
-            src="/assets/avatar.png"
+            src="/assets/avatar.webp"
             alt="Jannis Jorre"
           />
           <div
