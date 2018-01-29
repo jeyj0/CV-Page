@@ -5,17 +5,28 @@ import ProjectDetail from "../../components/ProjectDetail/ProjectDetail";
 
 export default class ProjectPage extends Component {
   subTitle = "";
-  componentWillReceiveProps = (nextProps, nextState) => {
-    let p = data.projects.filter(p => p.id === this.props.id);
-    p = p.length == 1 ? p[0] : null;
-    if (p == null) this.subTitle = "Project: 404";
-    else this.subTitle = "Project: " + p.short_name;
+  refreshSubTitle = true;
+
+  componentWillReceiveProps = (nextProps, nextState) =>
+    (this.refreshSubTitle = true);
+
+  getSubTitle = () => {
+    if (this.refreshSubTitle) {
+      let p = data.projects.filter(p => p.id === this.props.id);
+      p = p.length == 1 ? p[0] : null;
+      if (p == null) this.subTitle = "Project: 404";
+      else this.subTitle = "Project: " + p.short_name;
+      this.refreshSubTitle = false;
+      return this.subTitle;
+    }
+    return this.subTitle;
   };
 
-  componentWillMount = () => {
+  componentDidMount = () => {
     this.props.minTitleBar();
     this.props.disableMaxTitleBar();
-    this.props.setSubTitle(this.subTitle);
+    //console.log(this.subTitle);
+    this.props.setSubTitle(this.getSubTitle());
   };
 
   render({ id }) {
