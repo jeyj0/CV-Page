@@ -2,7 +2,10 @@ import "./style.scss";
 import { Component } from "preact";
 import { Link } from "preact-router/match";
 
+import IDs from "../../../lib/HackyIDSystem";
+
 import Menu from "../Menu/Menu";
+import FallbackImage from "../FallbackImage/FallbackImage";
 
 export default class TitleBar extends Component {
   toggable = true;
@@ -20,7 +23,8 @@ export default class TitleBar extends Component {
   state = {
     isSmall: this.props.sizeState == "small" || !this.props.sizeState,
     isUp: this.props.subtitle ? true : false,
-    maximizable: this.props.maximizable
+    maximizable: this.props.maximizable,
+    id: IDs.register()
   };
 
   minimize = () => this.setState({ isSmall: true });
@@ -76,26 +80,26 @@ export default class TitleBar extends Component {
 
   componentDidMount = () => {
     document
-      .getElementById("titleBar")
+      .getElementById(this.state.id)
       .addEventListener("touchstart", this.touchStart, { passive: false });
     document
-      .getElementById("titleBar")
+      .getElementById(this.state.id)
       .addEventListener("touchend", this.touchEnd, { passive: false });
   };
 
   componentWillUnmount = () => {
     document
-      .getElementById("titleBar")
+      .getElementById(this.state.id)
       .removeEventListener("touchstart", this.touchStart);
     document
-      .getElementById("titleBar")
+      .getElementById(this.state.id)
       .removeEventListener("touchend", this.touchEnd);
   };
 
-  render({ title, subtitle, maximizable, showShadow }, { isSmall, isUp }) {
+  render({ title, subtitle, maximizable, showShadow }, { isSmall, isUp, id }) {
     return (
       <div
-        id="titleBar"
+        id={id}
         class={
           "titleBar" +
           (isSmall || !maximizable ? " small" : "") +
@@ -104,9 +108,10 @@ export default class TitleBar extends Component {
         onClick={this.toggleIfAllowed}
       >
         <div class="title">
-          <img
+          <FallbackImage
             class={isSmall || !maximizable ? "small" : ""}
             src="/assets/avatar.webp"
+            fallbackSrc="/assets/avatar.png"
             alt="Jannis Jorre"
           />
           <div

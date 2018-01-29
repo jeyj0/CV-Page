@@ -148,7 +148,7 @@ export default class App extends Component {
               disableMaxTitleBar={this.disableMaxTitleBar}
             />
             <ProjectPage
-              path="/project/:id"
+              path="/project/:projectID"
               minTitleBar={this.minTitleBar}
               maxTitleBar={this.maxTitleBar}
               setSubTitle={this.setSubTitle}

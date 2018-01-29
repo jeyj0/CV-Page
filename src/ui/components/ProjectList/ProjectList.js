@@ -5,28 +5,28 @@ export default class ProjectList extends Component {
   render() {
     return (
       <div class="projectList">
-        <Project id="ajf" img="ajf.PNG">
+        <Project projectID="ajf" img="ajf.PNG">
           <h1>Project name</h1>
           <span>
             This is the project's short desciption. It should not be much longer
             than this.
           </span>
         </Project>
-        <Project id="ERROR" img="ajf.PNG">
+        <Project projectID="ERROR" img="ajf.PNG">
           <h1>Project name</h1>
           <span>
             This is the project's short desciption. It should not be much longer
             than this.
           </span>
         </Project>
-        <Project id="ajf" img="ajf.PNG">
+        <Project projectID="ajf" img="ajf.PNG">
           <h1>Project name</h1>
           <span>
             This is the project's short desciption. It should not be much longer
             than this.
           </span>
         </Project>
-        <Project id="ajf" img="ajf.PNG">
+        <Project projectID="ajf" img="ajf.PNG">
           <h1>Project name</h1>
           <span>
             This is the project's short desciption. It should not be much longer
