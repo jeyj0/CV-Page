@@ -4,6 +4,7 @@ import { Link } from "preact-router/match";
 
 import IDs from "../../../lib/HackyIDSystem";
 import TitleBar from "../TitleBar/TitleBar";
+import Footer from "../Footer/Footer";
 
 export default class TitleBarLayout extends Component {
   state = {
@@ -39,6 +40,7 @@ export default class TitleBarLayout extends Component {
       <div class="titleBarLayout">
         <div id={contentID} class="content">
           {children}
+          <Footer />
         </div>
         <TitleBar
           maximizable={maximizable}

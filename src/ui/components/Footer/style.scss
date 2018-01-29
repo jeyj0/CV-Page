@@ -1,0 +1,17 @@
+@import "../../../lib/vars";
+
+.footer {
+  background-color: $c-primary-dark;
+  color: $c-primary-light;
+  position: relative;
+  bottom: 0;
+  line-height: 2em;
+
+  $side-padding: 1em;
+  width: calc(100% - 2 * #{$side-padding});
+  padding: 2em $side-padding 4em;
+
+  span {
+    display: block;
+  }
+}
