@@ -38,17 +38,23 @@ export default class TitleBar extends Component {
   };
 
   touchStart = e => {
+    e.preventDefault();
     this.touchCoords.start.x = e.changedTouches[0].pageX;
     this.touchCoords.start.y = e.changedTouches[0].pageY;
   };
   touchEnd = e => {
+    e.preventDefault();
     this.touchCoords.end.x = e.changedTouches[0].pageX;
     this.touchCoords.end.y = e.changedTouches[0].pageY;
 
     const dx = Math.abs(this.touchCoords.end.x - this.touchCoords.start.x);
     const dy = Math.abs(this.touchCoords.end.y - this.touchCoords.start.y);
-    if (dy > dx && dy > 20) {
-      this.toggleIfAllowed();
+    if (dy > 20) {
+      if (dy > dx) {
+        this.toggleIfAllowed();
+      }
+    } else {
+      e.target.click();
     }
   };
 
@@ -68,6 +74,24 @@ export default class TitleBar extends Component {
     if (!nextProps.maximizable) this.minimize();
   };
 
+  componentDidMount = () => {
+    document
+      .getElementById("titleBar")
+      .addEventListener("touchstart", this.touchStart, { passive: false });
+    document
+      .getElementById("titleBar")
+      .addEventListener("touchend", this.touchEnd, { passive: false });
+  };
+
+  componentWillUnmount = () => {
+    document
+      .getElementById("titleBar")
+      .removeEventListener("touchstart", this.touchStart);
+    document
+      .getElementById("titleBar")
+      .removeEventListener("touchend", this.touchEnd);
+  };
+
   render({ title, subtitle, maximizable, showShadow }, { isSmall, isUp }) {
     return (
       <div
@@ -78,8 +102,6 @@ export default class TitleBar extends Component {
           (showShadow ? " shadow" : "")
         }
         onClick={this.toggleIfAllowed}
-        onTouchStart={this.touchStart}
-        onTouchEnd={this.touchEnd}
       >
         <div class="title">
           <img

@@ -6,26 +6,35 @@ export default class Menu extends Component {
     isMenuOpen: false
   };
 
-  clicked = () => {
-    this.toggleMenu();
+  openMenuAndClicked = () => {
     this.props.onClick();
+    this.setState({ isMenuOpen: true });
   };
 
-  toggleMenu = () => this.setState({ isMenuOpen: !this.state.isMenuOpen });
+  closeMenuAndClicked = () => {
+    this.props.onClick();
+    this.setState({ isMenuOpen: false });
+  };
 
-  render(props, { isMenuOpen }) {
+  render({ children }, { isMenuOpen }) {
+    for (let i = 0; i < children.length; i++)
+      children[i].attributes.onClick = this.closeMenuAndClicked;
+
     return (
-      <div class={"menu" + (props.class ? " " + props.class : "")}>
-        <div onClick={this.clicked} class="menuButton">
+      <div class={"menu" + (this.props.class ? " " + this.props.class : "")}>
+        <div onClick={this.openMenuAndClicked} class="menuButton">
           <div class="menuButtonPart" />
           <div class="menuButtonPart" />
           <div class="menuButtonPart" />
         </div>
         {isMenuOpen ? (
-          <div onClick={this.clicked} class="background-tap-listen-helper" />
+          <div
+            onClick={this.closeMenuAndClicked}
+            class="background-tap-listen-helper"
+          />
         ) : null}
-        <nav onMouseDown={this.toggleMenu} class={isMenuOpen ? "open" : ""}>
-          {this.props.children}
+        <nav /*onClick={this.toggleMenu}*/ class={isMenuOpen ? "open" : ""}>
+          {children}
         </nav>
       </div>
     );
