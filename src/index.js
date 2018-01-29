@@ -13,7 +13,6 @@ import Home from "./ui/pages/Home/Home";
 import CurriculumVitae from "./ui/pages/CurriculumVitae/CurriculumVitae";
 import Projects from "./ui/pages/Projects/Projects";
 import ProjectPage from "./ui/pages/ProjectPage/ProjectPage";
-import About from "./ui/pages/About/About";
 
 export default class App extends Component {
   state = {
@@ -150,14 +149,6 @@ export default class App extends Component {
             />
             <ProjectPage
               path="/project/:id"
-              minTitleBar={this.minTitleBar}
-              maxTitleBar={this.maxTitleBar}
-              setSubTitle={this.setSubTitle}
-              enableMaxTitleBar={this.enableMaxTitleBar}
-              disableMaxTitleBar={this.disableMaxTitleBar}
-            />
-            <About
-              path="/about"
               minTitleBar={this.minTitleBar}
               maxTitleBar={this.maxTitleBar}
               setSubTitle={this.setSubTitle}

@@ -138,9 +138,6 @@ export default class TitleBar extends Component {
           <Link activeClassName="active" href="/projects">
             Projects
           </Link>
-          <Link activeClassName="active" href="/about">
-            About
-          </Link>
         </Menu>
         <div
           class={"arrowContainer" + (isSmall || !maximizable ? " small" : "")}
