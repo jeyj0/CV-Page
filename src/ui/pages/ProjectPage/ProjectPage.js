@@ -12,7 +12,7 @@ export default class ProjectPage extends Component {
 
   getSubTitle = () => {
     if (this.refreshSubTitle) {
-      let p = data.projects.filter(p => p.id === this.props.id);
+      let p = data.projects.filter(p => p.id === this.props.projectID);
       p = p.length == 1 ? p[0] : null;
       if (p == null) this.subTitle = "Project: 404";
       else this.subTitle = "Project: " + p.short_name;
@@ -29,19 +29,19 @@ export default class ProjectPage extends Component {
     this.props.setSubTitle(this.getSubTitle());
   };
 
-  render({ id }) {
+  render({ projectID }) {
     return (
       <div>
         <Head>
           <title>Jannis Jorre - Project</title>
         </Head>
-        {!(data.projects.filter(p => p.id === id).length == 1) ? (
+        {!(data.projects.filter(p => p.id === projectID).length == 1) ? (
           <div>
             <h1>Error 404</h1>
             <p>This project does not exist, as it seems.</p>
           </div>
         ) : (
-          <ProjectDetail id={id} />
+          <ProjectDetail projectID={projectID} />
         )}
       </div>
     );
