@@ -133,6 +133,9 @@ export default class TitleBar extends Component {
             </h2>
           </div>
         </div>
+        {isSmall || !maximizable ? (
+          <Link class="homeLink" activeClassName="active" href="/home" />
+        ) : null}
         <Menu class="alignRight" onClick={this.blockToggle}>
           <Link activeClassName="active" href="/home">
             Home

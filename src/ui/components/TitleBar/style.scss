@@ -28,6 +28,7 @@ $transition-duration: 0.5s;
   height: 100%;
   text-align: right;
   background-color: #ffffff;
+  $smallHeight: 4.5em;
 
   &.shadow {
     box-shadow: 0px 3px 30px 0px rgba(50, 50, 50, 0.75);
@@ -37,7 +38,7 @@ $transition-duration: 0.5s;
   transition-duration: $transition-duration;
 
   &.small {
-    height: 4.5em;
+    height: $smallHeight;
     position: fixed;
   }
 
@@ -185,7 +186,7 @@ $transition-duration: 0.5s;
 
       $font-size: 1em;
       font-size: $font-size;
-      line-height: (4.5em / $font-size * 1em);
+      line-height: ($smallHeight / $font-size * 1em);
 
       top: 1.5em;
 
@@ -200,6 +201,18 @@ $transition-duration: 0.5s;
         transition-delay: $transition-duration * 2 / 3;
         transition-timing-function: ease-out;
       }
+    }
+  }
+
+  .homeLink {
+    width: calc(100% - #{$smallHeight});
+    height: $smallHeight;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    &.active {
+      display: none;
     }
   }
 
