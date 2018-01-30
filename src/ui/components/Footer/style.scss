@@ -11,7 +11,21 @@
   width: calc(100% - 2 * #{$side-padding});
   padding: 2em $side-padding 4em;
 
-  span {
-    display: block;
+  address {
+		font-style: normal;
+		margin-bottom: 2.5em;
+
+    ul {
+      margin: 0;
+      line-height: 1.5em;
+    }
+
+    span {
+      display: block;
+    }
+  }
+
+  a {
+    color: $c-primary-light;
   }
 }
